@@ -1,11 +1,10 @@
-(ns safe-counter.counter
+(ns clj-interop.counter
   (:gen-class
-    :name safe_counter.Counter
+    :name clj.interop.SafeCounter
+    :implements [clj.interop.Counter]
     :state state
     :init init
-    :prefix "-"
-    :methods [[inc [] void]
-              [value [] int]]))
+    :prefix "-"))
 
 (defn -init []
   [[] (atom 0)])

@@ -1,14 +1,15 @@
 package counter;
 
+import clj.interop.Counter;
+import clj.interop.SafeCounter;
 import org.junit.Test;
-import safe_counter.Counter;
 
 import static org.hamcrest.core.Is.is;
 import static org.junit.Assert.assertThat;
 
 public class CounterTest {
 
-    private Counter counter = new Counter();
+    private Counter counter = new SafeCounter();
 
     @Test
     public void shouldCount() {

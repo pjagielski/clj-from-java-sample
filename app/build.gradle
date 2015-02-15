@@ -1,0 +1,42 @@
+buildscript {
+    repositories {
+        mavenCentral()
+        maven { url 'http://clojars.org/repo' }
+    }
+    dependencies {
+        classpath 'clojuresque:clojuresque:1.7.0'
+    }
+}
+
+sourceCompatibility = 1.7
+targetCompatibility = 1.7
+
+repositories {
+    mavenCentral()
+    maven { url 'http://clojars.org/repo' }
+}
+
+dependencies {
+    compile project(':api')
+    compile 'org.clojure:clojure:1.6.0'
+    runtime 'org.clojure:tools.nrepl:0.2.7'
+    testCompile 'junit:junit:4.12'
+}
+
+apply plugin: 'clojure'
+
+compileJava {
+    classpath = project.files(project.compileClojure.outputs, classpath)
+}
+
+clojureRepl {
+    port = "9999"
+}
+
+sourceSets {
+    main {
+        clojure {
+            aotCompile = true
+        }
+    }
+}
